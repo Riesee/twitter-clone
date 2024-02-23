@@ -8,6 +8,8 @@ import { User } from '../interface';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ModelService } from '../shared/services/model.service';
+import { EditUserComponent } from "../edit-user/edit-user.component";
+import { ConfigService } from '../shared/services/config.service';
 
 
 
@@ -16,7 +18,7 @@ import { ModelService } from '../shared/services/model.service';
     standalone: true,
     templateUrl: './user-profile.component.html',
     styleUrl: './user-profile.component.scss',
-    imports: [AvatarComponent, ButtonComponent, CommonModule]
+    imports: [AvatarComponent, ButtonComponent, CommonModule, EditUserComponent]
 })
 export class UserProfileComponent implements OnInit {
   isFollowed: boolean = false;
@@ -32,6 +34,7 @@ export class UserProfileComponent implements OnInit {
   
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService,
+    private config: ConfigService,
     public auth: AuthService, public modalService: ModelService) { }
 
     ngOnInit(): void {
@@ -52,6 +55,7 @@ export class UserProfileComponent implements OnInit {
     getCurrentUserProfileInfo(): void {
       this.subscription = this.userService.getAllUsers().subscribe(_user => {
         this.user = _user.find(u => u.uid === this.currentUserId) as User;
+        this.config.updateHeaderSettings(this.user.displayName, true)
       })
     }
 
@@ -82,6 +86,10 @@ export class UserProfileComponent implements OnInit {
         })
       }
       this.isFollowed = !this.isFollowed;
+    }
+
+    edit(){
+      this.modalService.isEditModalOpen.set(true);
     }
 
     

@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HomeComponent } from "../../home/home.component";
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule,],
-  template: `
+    selector: 'app-header',
+    standalone: true,
+    template: `
     <div class="border-b-[1px] border-neutral-800 p-5">
     <div class="flex flex-row items-center gap-2">
       <span *ngIf="showBackArrow" class="material-icons text-white cursor-pointer" (click)="goBack()">
@@ -15,8 +15,10 @@ import { CommonModule } from '@angular/common';
       <h1 class="text-white text-xl font-semibold">{{title}}</h1>
     </div>
    </div>
+   <app-home />
   `,
-  styles: ``
+    styles: ``,
+    imports: [CommonModule, HomeComponent]
 })
 export class HeaderComponent {
   @Input() showBackArrow: boolean = false;
