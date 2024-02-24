@@ -15,7 +15,7 @@ import { HomeComponent } from "../../home/home.component";
       <h1 class="text-white text-xl font-semibold">{{title}}</h1>
     </div>
    </div>
-   <app-home />
+   <!-- <app-home /> -->
   `,
     styles: ``,
     imports: [CommonModule, HomeComponent]

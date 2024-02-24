@@ -6,13 +6,6 @@ import { DateAgoPipe } from './shared/pipes/date-ago.pipe';
 
 @NgModule({
   declarations: [
-
-
-    
-    
-    
-    
-
     
   ],
   imports: [
@@ -20,11 +13,7 @@ import { DateAgoPipe } from './shared/pipes/date-ago.pipe';
     MainRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    
-    
-    
-    
-    
+
     
   ]
 })

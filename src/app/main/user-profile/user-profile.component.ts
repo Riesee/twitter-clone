@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { ModelService } from '../shared/services/model.service';
 import { EditUserComponent } from "../edit-user/edit-user.component";
 import { ConfigService } from '../shared/services/config.service';
+import { PostsComponent } from "../components/posts/posts.component";
 
 
 
@@ -18,7 +19,7 @@ import { ConfigService } from '../shared/services/config.service';
     standalone: true,
     templateUrl: './user-profile.component.html',
     styleUrl: './user-profile.component.scss',
-    imports: [AvatarComponent, ButtonComponent, CommonModule, EditUserComponent]
+    imports: [AvatarComponent, ButtonComponent, CommonModule, EditUserComponent, PostsComponent]
 })
 export class UserProfileComponent implements OnInit {
   isFollowed: boolean = false;

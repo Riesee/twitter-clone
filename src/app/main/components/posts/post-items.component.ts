@@ -4,12 +4,13 @@ import { PostsService } from '../../shared/services/posts.service';
 import { AuthService } from '../../shared/services/auth.service';
 import { Post } from '../../interface';
 import { Router } from '@angular/router';
+import { DateAgoPipe } from "../../shared/pipes/date-ago.pipe";
 
 
 @Component({
-  selector: 'app-post-items',
-  standalone: true,
-  template: `
+    selector: 'app-post-items',
+    standalone: true,
+    template: `
     <div
       (click)="goToPost(post.postId)"
       class="border-b-[1px] border-neutral-800 p-5 cursor-pointer hover:bg-neutral-900 transition"
@@ -28,7 +29,7 @@ import { Router } from '@angular/router';
               {{ post.user?.username }}
             </span>
             <span class="text-neutral-500 text-sm">
-              {{ post.createdAt?.toDate()  }}
+              {{ post.createdAt?.toDate() | dateAgo }}
             </span>
           </div>
           <div class="text-white mt-1">
@@ -64,8 +65,8 @@ import { Router } from '@angular/router';
       </div>
     </div>
   `,
-  styles: ``,
-  imports: [AvatarComponent],
+    styles: ``,
+    imports: [AvatarComponent, DateAgoPipe]
 })
 export class PostItemsComponent {
   @Input() post!: Post;
